@@ -17,11 +17,22 @@ $HOME/
             pullrequest.md
             issue.md
           topic_branch2/
+    .template/
+      note-default-template.md
+      issue-defaullt-template.txt
 ```
 
 * リポジトリとは別ディレクトリで管理されるので、トラッキングする必要はありません。
 * `git clean -f`を実行してもメモが消えることはありません。
 * 同じリポジトリを複数cloneしても、1つの共通のメモを開くことができます。
+
+## テンプレート
+
+下記のように設定値で各ファイル名ごとにデフォルトのテンプレートファイルを指定することができます。dictのkeyでファイル名、valueで`.template`以下のファイルパスを指定します。テンプレートはファイルを新規作成する時のみ挿入されます。
+
+```
+let g:branchnote_global_template_each_type = {'note': 'note-template.md', 'issue': 'issue-template.txt'}
+```
 
 ## コマンド
 
@@ -44,6 +55,11 @@ let g:branchnote_path = $HOME . "/branchnote/"
 
 " 保存するファイルの拡張子
 let g:branchnote_note_suffix = "md"
+
+
+" ファイル名ごとのテンプレートファイルパス
+" ex: {'note': 'note-template.md', 'issue': 'issue-template.txt'}
+let g:branchnote_global_template_each_type = {}
 ```
 
 ## MAP

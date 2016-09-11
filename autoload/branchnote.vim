@@ -44,6 +44,23 @@ endfunction
 function! s:get_branch_dir() abort
   return s:get_repo_dir() . s:get_current_branch() . '/'
 endfunction
+
+function! s:insert_default_template(type, insert_line_num) abort
+  let template_name = g:branchnote_default_template_each_type[a:type]
+  if g:branchnote_template_dir_path != ""
+    let path = expand(g:branchnote_template_dir_path, ":p")
+    let path = path . "/" . template_name
+    if filereadable(path)
+      let template = readfile(path)
+    endif
+  endif
+
+  let old_undolevels = &undolevels
+  set undolevels=-1
+  call append(a:insert_line_num, template)
+  let &undolevels = old_undolevels
+  set nomodified
+endfunction
 "}}}
 
 " Function:
@@ -55,7 +72,12 @@ function! branchnote#open(type) abort
   endif
 
   let file_name = a:type . '.' . g:branchnote_note_suffix
-  exec 'edit' branch_dir . file_name
+  let file_path = branch_dir . file_name
+  silent exec 'edit' file_path
+
+  if !filereadable(file_path) && has_key(g:branchnote_default_template_each_type, a:type)
+    call s:insert_default_template(a:type, 0)
+  endif
 endfunction
 
 command! -nargs=1 BNoteOpen :call branchnote#open(<q-args>)

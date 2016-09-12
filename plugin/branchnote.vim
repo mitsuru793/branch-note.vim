@@ -11,7 +11,7 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 if !exists('g:branchnote_path')
-  let g:branchnote_path = $HOME . "/branchnote/"
+  let g:branchnote_path = $HOME . "/.branchnote/"
 endif
 let g:branchnote_note_path = g:branchnote_path . '/note/'
 

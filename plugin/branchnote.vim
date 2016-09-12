@@ -20,7 +20,7 @@ if !exists('g:branchnote_memo_suffix')
 endif
 
 if !exists('g:branchnote_template_dir_path')
-  let g:branchnote_template_dir_path = g:branchnote_path . '.template/'
+  let g:branchnote_template_dir_path = g:branchnote_path . '/template/'
 endif
 
 if !exists('g:branchnote_default_template_each_type')

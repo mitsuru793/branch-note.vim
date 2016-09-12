@@ -38,7 +38,7 @@ endfunction
 
 function! s:get_repo_dir() abort
   let url = s:system('git config --get remote.origin.url')
-  return g:branchnote_path . substitute(url, '^.*://', '', '') . '/'
+  return g:branchnote_note_path . substitute(url, '^.*://', '', '') . '/'
 endfunction
 
 function! s:get_branch_dir() abort

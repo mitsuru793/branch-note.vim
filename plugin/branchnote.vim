@@ -13,6 +13,7 @@ set cpo&vim
 if !exists('g:branchnote_path')
   let g:branchnote_path = $HOME . "/branchnote/"
 endif
+let g:branchnote_note_path = g:branchnote_path . '/note/'
 
 if !exists('g:branchnote_memo_suffix')
   let g:branchnote_note_suffix = "md"

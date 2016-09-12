@@ -48,12 +48,14 @@ endfunction
 function! s:insert_default_template(type, insert_line_num) abort
   let template_name = g:branchnote_default_template_each_type[a:type]
   if g:branchnote_template_dir_path != ""
-    let path = expand(g:branchnote_template_dir_path, ":p")
-    let path = path . "/" . template_name
-    if filereadable(path)
-      let template = readfile(path)
-    endif
+    return
   endif
+  let path = expand(g:branchnote_template_dir_path, ":p")
+  let path = path . "/" . template_name
+  if !filereadable(path)
+    return
+  endif
+  let template = readfile(path)
 
   let old_undolevels = &undolevels
   set undolevels=-1

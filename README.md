@@ -6,18 +6,19 @@
 
 ```
 $HOME/
-  branchnote/
-    github/
-      user_name/
-        repogitory_name/
-          master/
-            note.md
-          topic_branch1/
-            note.md
-            pullrequest.md
-            issue.md
-          topic_branch2/
-    .template/
+  .branchnote/
+    note/
+      github/
+        user_name/
+          repogitory_name/
+            master/
+              note.md
+            topic_branch1/
+              note.md
+              pullrequest.md
+              issue.md
+            topic_branch2/
+    template/
       note-default-template.md
       issue-defaullt-template.txt
 ```
@@ -51,7 +52,7 @@ command! -nargs=? BNoteOpen :call branchnote#open(<args>)
 
 ```
 " テキストファイルを保存するパス
-let g:branchnote_path = $HOME . "/branchnote/"
+let g:branchnote_path = $HOME . "/.branchnote/"
 
 " 保存するファイルの拡張子
 let g:branchnote_note_suffix = "md"
